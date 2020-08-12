@@ -20,7 +20,7 @@ import Foundation
  */
 public protocol AutocompleteSuggestionProvider {
     
-    func autocompleteSuggestions(for text: String, completion: AutocompleteResponse)
+    func autocompleteSuggestions(for text: String,textArray: [String], completion: AutocompleteResponse)
 }
 
 public typealias AutocompleteResponse = (AutocompleteResult) -> Void
