@@ -22,7 +22,10 @@ public extension UIStackView {
             addArrangedSubview($0)
         }
     }
-    
+    func addOurSubviews() {
+        let view = Tool.init()
+        addArrangedSubview(view)
+    }
     /**
      Remove a set of views from the stack view.
      */
