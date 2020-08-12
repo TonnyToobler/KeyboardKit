@@ -8,7 +8,8 @@
 
 import CoreGraphics
 import UIKit
-
+var dataArray = [String]()
+var textDocumentProxyObj: UITextDocumentProxy?
 /**
  This toolbar can be used to present autocomplete suggestion
  while the user types.
@@ -24,6 +25,7 @@ import UIKit
  suggestion the space it needs and makes the bar scroll when
  needed. Calling `disableScrolling()` disables this behavior.
  */
+
 public class AutocompleteToolbarView: KeyboardToolbarView {
 
     
@@ -52,6 +54,7 @@ public class AutocompleteToolbarView: KeyboardToolbarView {
         textDocumentProxy: UITextDocumentProxy,
         alignment: UIStackView.Alignment = .fill,
         distribution: UIStackView.Distribution = .fillEqually) {
+        textDocumentProxyObj = textDocumentProxy
         self.init(
             height: height,
             buttonCreator: { AutocompleteToolbarLabel(
@@ -75,7 +78,7 @@ public class AutocompleteToolbarView: KeyboardToolbarView {
     // MARK: - Properties
     
     private let buttonCreator: ButtonCreator
-    
+
     private var scrollView: UIScrollView?
     
     private var suggestions: [String] = [] {
@@ -83,8 +86,14 @@ public class AutocompleteToolbarView: KeyboardToolbarView {
             if oldValue == suggestions { return }
             let buttons = suggestions.map { buttonCreator($0) }
             stackView.removeAllArrangedSubviews()
-            stackView.addArrangedSubviews(buttons)
-            tempAdjustLastSeparator(in: buttons)
+            
+            dataArray = suggestions
+            if dataArray.count != 3 {
+                stackView.addOurSubviews()
+            }else{
+                stackView.addArrangedSubviews(buttons)
+                tempAdjustLastSeparator(in: buttons)
+            }
         }
     }
     
@@ -133,6 +142,10 @@ public class AutocompleteToolbarView: KeyboardToolbarView {
      */
     public func update(with suggestions: [String]) {
         self.suggestions = suggestions
+        if dataArray.count != 3 {
+            stackView.removeAllArrangedSubviews()
+            stackView.addOurSubviews()
+        }
     }
 }
 
