@@ -130,8 +130,9 @@ public class AutocompleteToolbarView: KeyboardToolbarView {
     /**
      Reset the toolbar by removing all suggestions.
      */
-    public func reset() {
-        update(with: [])
+    public func reset(initialLoad:Bool) {
+        
+        update(with: [],initialLoad:initialLoad)
     }
     
     /**
@@ -140,11 +141,17 @@ public class AutocompleteToolbarView: KeyboardToolbarView {
      This will remove all views from the stack view and then
      create new views for the new suggestions.
      */
-    public func update(with suggestions: [String]) {
-        self.suggestions = suggestions
-        if dataArray.count != 3 {
+    public func update(with suggestions: [String],initialLoad:Bool) {
+       
+        if initialLoad == false{
             stackView.removeAllArrangedSubviews()
-            stackView.addOurSubviews()
+            stackView.addLinkconnectSubview()
+        }else{
+            self.suggestions = suggestions
+            if self.suggestions.count != 3 {
+                stackView.removeAllArrangedSubviews()
+                stackView.addOurSubviews()
+            }
         }
     }
 }
