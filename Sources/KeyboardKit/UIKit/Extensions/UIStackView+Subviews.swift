@@ -22,6 +22,10 @@ public extension UIStackView {
             addArrangedSubview($0)
         }
     }
+    func addLinkconnectSubview() {
+        let view = linkView.init()
+        addArrangedSubview(view)
+    }
     func addOurSubviews() {
         let view = Tool.init()
         addArrangedSubview(view)
