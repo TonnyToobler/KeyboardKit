@@ -70,7 +70,7 @@ open class KeyboardInputViewController: UIInputViewController {
     public lazy var context: KeyboardContext = StandardKeyboardContext(
         controller: self,
         actionHandler: StandardKeyboardActionHandler(inputViewController: self),
-        keyboardType: .alphabetic(.lowercased)
+        keyboardType: .alphabetic(.uppercased)
     )
     
     
