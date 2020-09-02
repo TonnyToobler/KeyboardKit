@@ -13,6 +13,7 @@ class Tool: UIView {
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var leftButton: UIButton!
     var currentArrayIndex = 0
+    var previousText = String()
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.frame = UIScreen.main.bounds
@@ -70,10 +71,14 @@ class Tool: UIView {
                 lastWords = lastWords.dropLast()
             }
             count = count+(lastWords.last?.count ?? 0)
+            if previousText != ""{
+                count = previousText.count
+            }
             for _: Int in 0 ..<  count {
                 self.textDocumentProxy?.deleteBackward()
             }
         }
+        previousText = textLbl.text ?? ""
         textDocumentProxy?.replaceCurrentWord(with: textLbl.text ?? "" + " ")
     }
 }
