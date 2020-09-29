@@ -35,7 +35,7 @@ public class linkView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     @objc func buttonAction(sender: UIButton!) {
-        let url = "https://forms.office.com/Pages/ResponsePage.aspx?id=s78kuI6RwkO7HNzBukCoK6-vTLPcZtJNoEGs-lhs9SxUMzM5UlQ3TVVERlowTDdNVDcwVDFJSUhUSi4u"
+        let url = "https://moretoms.com"
         if let url = URL(string: url), UIApplication.shared.canOpenURL(url) {
            if #available(iOS 10.0, *) {
               UIApplication.shared.open(url, options: [:], completionHandler: nil)
