@@ -14,5 +14,11 @@ public extension CGFloat {
      The standard height of keyboard row components, as used
      by `KeyboardKit`.
      */
-    static var standardKeyboardRowHeight: CGFloat { 50 }
+    static var standardKeyboardRowHeight: CGFloat {
+    if UIApplication.shared.statusBarOrientation.isLandscape {
+        return 35
+    } else {
+        return 50
+    }
+    }
 }
