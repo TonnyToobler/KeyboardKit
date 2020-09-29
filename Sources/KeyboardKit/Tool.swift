@@ -57,7 +57,7 @@ class Tool: UIView {
 @objc private extension Tool {
     
     func handleTap() {
-        let wordsArry = ["wiped out","worn out","burnt out","done in"]
+        let wordsArry = ["wiped out","worn out","burnt out","done in","erledigt in","fatto in"]
         if let word:String = self.textDocumentProxy?.documentContextBeforeInput
         {
             var lastWords = word.components(separatedBy: " ")
