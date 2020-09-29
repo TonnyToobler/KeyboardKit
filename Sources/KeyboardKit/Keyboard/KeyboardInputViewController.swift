@@ -85,6 +85,7 @@ open class KeyboardInputViewController: UIInputViewController {
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .equalSpacing
+        stackView.spacing = 5
         view.addSubview(stackView, fill: true)
         return stackView
     }()
@@ -129,3 +130,4 @@ open class KeyboardInputViewController: UIInputViewController {
         viewWillSyncWithTextDocumentProxy()
     }
 }
+
